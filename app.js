@@ -10,10 +10,19 @@
 
 // console.log(myObject);
 
-let theData1 = `{"first":"Paul","last":"Cheney","city":"Salem"}`;
+// let theData1 = `{"first":"Paul","last":"Cheney","city":"Salem"}`;
 
-let myObject = JSON.parse(theData1);
+// let myObject = JSON.parse(theData1);
+
+// console.log(myObject);
+
+// document.querySelector('p').innerHTML = myObject.first;
+
+let theData2 = '{"Jane": {"age":"29","degree": {"AAS":"VMI","BA":"UVA"}},"Jim": {"age":"49","degree":"MA"}}';
+let myObject = JSON.parse(theData2);
 
 console.log(myObject);
 
-document.querySelector('p').innerHTML = myObject.first;
+myObject.Jane.age;
+
+document.querySelector('p').innerHTML = myObject.Jane.degree.AAS;
