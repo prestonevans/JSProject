@@ -18,11 +18,29 @@
 
 // document.querySelector('p').innerHTML = myObject.first;
 
-let theData2 = '{"Jane": {"age":"29","degree": {"AAS":"VMI","BA":"UVA"}},"Jim": {"age":"49","degree":"MA"}}';
-let myObject = JSON.parse(theData2);
+// let theData2 = '{"Jane": {"age":"29","degree": {"AAS":"VMI","BA":"UVA"}},"Jim": {"age":"49","degree":"MA"}}';
+// let myObject = JSON.parse(theData2);
 
-console.log(myObject);
+// console.log(myObject);
 
-myObject.Jane.age;
+// myObject.Jane.age;
 
-document.querySelector('p').innerHTML = myObject.Jane.degree.AAS;
+// document.querySelector('p').innerHTML = myObject.Jane.degree.AAS;
+
+let xhr = new XMLHttpRequest();
+
+xhr.open('Get', 'data.json', true);
+xhr.responseType = 'text';
+xhr.send();
+
+xhr.onreadystatechange = function() {
+	console.log(xhr.readyState);
+	console.log(xhr.statusText);
+};
+
+xhr.onload = function() {
+	if (xhr.status === 200) {
+		let myStuff = JSON.parse(xhr.responseText);
+		document.querySelector('p').innerHTML = myStuff.first;
+	}
+};
